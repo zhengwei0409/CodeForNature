@@ -1,29 +1,34 @@
 
-package com.mycompany.triviasection;
+package Triviasection;
 
+import TestingGUICode.Login; // for GUI
+// import LoginSection.*; // for CLI
 import java.sql.*;
 import java.time.LocalDate;
 
 public class ConnectDatabase {
     
+    // create an object of login class ( to get the user id )
+    Login lg = new Login();
+
     private String userName;
+    private String email;
     private LocalDate registrationDate;
     private LocalDate lastCheckInDate;
     private int current_point;
     private String question_answered;
-    private int userId = 2;
+    private int userId = lg.getUserId();;
     
     // constructor that connect to database and execute query
     public ConnectDatabase() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
-        String password = "your_database_password";
+        String password = "Vip4547chew$";
 
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
-            System.out.println("Connected to MySQL database!");
             
-            String sqlQuery = "SELECT username, registration_date, current_point, question_answered, last_checkin_date FROM UserAccount WHERE id = ?";
+            String sqlQuery = "SELECT id, email, username, registration_date, current_point, question_answered, last_checkin_date FROM UserAccount WHERE id = ?";
             
             // Create a PreparedStatement with the SQL query
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
@@ -40,6 +45,8 @@ public class ConnectDatabase {
                         this.current_point = resultSet.getInt("current_point");
                         this.question_answered = resultSet.getString("question_answered");
                         this.userName = resultSet.getString("username");
+                        this.userId = resultSet.getInt("id");
+                        this.email = resultSet.getString("email");
                         
                         // Convert java.sql.Date to LocalDate
                         this.registrationDate = sqlRegistrationDate.toLocalDate();
@@ -63,9 +70,9 @@ public class ConnectDatabase {
     
     // method use for update the point
     public void updateCurrentPoint(int newPoint) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
-        String password = "your_database_password";
+        String password = "Vip4547chew$";
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
 
@@ -90,9 +97,9 @@ public class ConnectDatabase {
     
     // method use for update the question answered
     public void updateQuestionAnswered(String questionAnswered) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
-        String password = "your_database_password";
+        String password = "Vip4547chew$";
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
 
@@ -117,9 +124,9 @@ public class ConnectDatabase {
     
     // method use for update the check in date
     public void updateCheckInDate(LocalDate lastCheckInDate) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/your_database_name";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
-        String password = "your_database_password";
+        String password = "Vip4547chew$";
 
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
 
@@ -144,6 +151,14 @@ public class ConnectDatabase {
     }
     
     // accessor
+    public int getID() {
+        return this.userId;
+    }
+    
+    public String getEmail() {
+        return this.email;
+    }
+    
     public String getUsername() {
         return this.userName;
     }
@@ -163,7 +178,5 @@ public class ConnectDatabase {
     public LocalDate getLastCheckInDate() {
         return this.lastCheckInDate;
     }
-    
 
-     
 }

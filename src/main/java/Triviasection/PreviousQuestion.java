@@ -1,5 +1,5 @@
 
-package com.mycompany.triviasection;
+package Triviasection;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

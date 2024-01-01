@@ -1,5 +1,5 @@
 
-package com.mycompany.triviasection;
+package Triviasection;
 
 import java.util.Scanner;
 import java.io.*;
@@ -36,12 +36,11 @@ public class Donation {
         // write to the donation.txt file
         try{
             
-        PrintWriter wr = new PrintWriter(new FileOutputStream("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/com/mycompany/triviasection/Donations.txt",true));
+        PrintWriter wr = new PrintWriter(new FileOutputStream("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/Triviasection/Donations.txt",true));
         
         wr.printf("%s has donated $%.2f to %s\n", database.getUsername(), amount, NGOName);
         
         wr.close();
-        sc.close();
         } catch (IOException e) {
             System.out.println("Fix this error now!!!!");
         }

@@ -1,6 +1,6 @@
 
 
-package com.mycompany.triviasection;
+package Triviasection;
 
 import java.util.*;
 import java.io.*;
@@ -27,12 +27,11 @@ public class TriviaSection {
         // create an anrray for storing correct answer's index
         String[] answers = new String[numberOfQuestions];
 
-        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/com/mycompany/triviasection/TriviaSample.txt");
+        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/Triviasection/TriviaSample.txt");
         
         try {
             
             Scanner sc = new Scanner(triviaSample);
-
 
             while (sc.hasNextLine()) {
                 for(int i = 0; i < numberOfQuestions; i++) {
@@ -193,6 +192,7 @@ public class TriviaSection {
                     System.out.println("Total marks achieved so far: " + points);
                 }
         }
+        
         // update the point in database
         database.updateCurrentPoint(points);
         
@@ -223,7 +223,7 @@ public class TriviaSection {
 
         String[] answers = new String[numberOfQuestions];
 
-        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/com/mycompany/triviasection/TriviaSample.txt");
+        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/Triviasection/TriviaSample.txt");
         
         try {
             
@@ -349,6 +349,7 @@ public class TriviaSection {
                     System.out.println("Total marks achieved so far: " + points);
                 }
         }
+
         // update the point in database
         database.updateCurrentPoint(points);
         
@@ -381,7 +382,7 @@ public class TriviaSection {
         // create an anrray for storing correct answer's index
         String[] answers = new String[numberOfQuestions];
 
-        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/com/mycompany/triviasection/TriviaSample.txt");
+        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/Triviasection/TriviaSample.txt");
         
         try {
             
@@ -537,7 +538,7 @@ public class TriviaSection {
 
         String[] answers = new String[numberOfQuestions];
 
-        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/com/mycompany/triviasection/TriviaSample.txt");
+        File triviaSample = new File("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/Triviasection/TriviaSample.txt");
         
         try {
             
