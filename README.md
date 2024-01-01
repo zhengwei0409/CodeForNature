@@ -15,17 +15,7 @@ I am using built with Maven , so there is no require jar file for database , if 
   
 If using maven , there will be a folder call Project Files , inside there has a file named pom.xml  
   
-remember to include the following xml inside pom.xml so that your program can connect to database :  
-  
-   // <dependencies>
-      //  <dependency>
-        	// <groupId>mysql</groupId>
-        	// <artifactId>mysql-connector-java</artifactId>
-        	// <version>8.0.29</version> 
-    	// </dependency>
-   // </dependencies>  
-  
-remove the // when u copy it
+copy the code inside pom.xml  
 *but if u r directly cloning , i think it will be included liao*  
   
 For database  
