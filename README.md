@@ -35,7 +35,7 @@ create table UserAccount (
 And remember to change the username to your database username as well as the password  
 还有还有 remember change every file path in this code   
   
-*run the code in MainTesting.java to execute the GUI program*
+*run the code in MainTesting.java to execute the GUI program*  
 *run the code in Main.java to execute the CLI program* ( also need to change something in ConnectDatabase.java , i included comment at there liao )  
   
 Yeahh happy new year everyone ʕ•̫͡•ʔ
