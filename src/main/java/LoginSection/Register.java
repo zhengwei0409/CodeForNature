@@ -1,6 +1,7 @@
 
 package LoginSection;
 
+import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.sql.*;
@@ -29,18 +30,20 @@ public class Register {
         System.out.println("Enter a password : ");
         String password = sc.next();
         
+        String hashedPassword = PasswordHash(password);
+        
         LocalDate currentDate = LocalDate.now();
         
         try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "Vip4547chew$");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
 
             // Insert user into the database
             String query = "INSERT INTO UserAccount (email, username, password, registration_date) VALUES (?, ?, ?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, username); 
-                preparedStatement.setString(3, password);
+                preparedStatement.setString(3, hashedPassword);
                 preparedStatement.setDate(4, java.sql.Date.valueOf(currentDate));
 
                 int rowsAffected = preparedStatement.executeUpdate();
@@ -58,4 +61,22 @@ public class Register {
             e.printStackTrace();
         }
     }
+    
+    // method use for hashing password
+    public static String PasswordHash (String password){
+        try{
+            MessageDigest md = MessageDigest.getInstance ("SHA-256"); 
+            md.update(password.getBytes());
+            byte [] rbt = md.digest();
+            StringBuilder sb = new StringBuilder();
+            
+            for (byte b: rbt){
+                sb.append (String.format("%02x", b));
+            }
+            return sb.toString();
+        }catch (Exception e){
+            
+        }return null;
+    }
+    
 }

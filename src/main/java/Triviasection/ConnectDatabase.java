@@ -21,7 +21,7 @@ public class ConnectDatabase {
     
     // constructor that connect to database and execute query
     public ConnectDatabase() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/(database_name)";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/";
         String username = "root";
         String password = "";
 
@@ -70,7 +70,7 @@ public class ConnectDatabase {
     
     // method use for update the point
     public void updateCurrentPoint(int newPoint) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/(database_name)";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/";
         String username = "root";
         String password = "";
 
@@ -97,7 +97,7 @@ public class ConnectDatabase {
     
     // method use for update the question answered
     public void updateQuestionAnswered(String questionAnswered) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/(database_name)";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/";
         String username = "root";
         String password = "";
 
@@ -124,7 +124,7 @@ public class ConnectDatabase {
     
     // method use for update the check in date
     public void updateCheckInDate(LocalDate lastCheckInDate) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/(database_name)";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/";
         String username = "root";
         String password = "";
 

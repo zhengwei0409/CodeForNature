@@ -1,6 +1,7 @@
 
 package LoginSection;
 
+import static LoginSection.Register.PasswordHash;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -26,24 +27,31 @@ public class Login {
         
         try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "Vip4547chew$");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
 
             // Query the database
             String query = "SELECT id FROM UserAccount WHERE email = ? AND password = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
-
+                
                 ResultSet resultSet = preparedStatement.executeQuery();
-
+                
                 if (resultSet.next()) {
+                String storedHashedPassword = resultSet.getString("password");
+                int storedUserId = resultSet.getInt("id");
+
+                if (storedHashedPassword.equals(PasswordHash(password))) {
                     System.out.println("Login successful!");
-                    userId = resultSet.getInt("id");
+                    userId = storedUserId;
                     break;
                 } else {
                     System.out.println("Invalid email or password");
                     System.out.println("Enter again");
                 }
+            } else {
+                System.out.println("User not found");
+                System.out.println("Enter again");
+            }
             }
 
             // Close resources
