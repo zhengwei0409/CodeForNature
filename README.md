@@ -1,5 +1,8 @@
-# FOP CODE FOR NATURE 1.0
-*hopefully only have 1.0*
+# FOP CODE FOR NATURE 2.0
+*hopefully only have 2.0*
+
+In the 2.0 version, we introduced a new feature - password hashing.  
+A special thanks to the person who implemented this valuable addition.
 
 This is the complete CLI & GUI code 
 
