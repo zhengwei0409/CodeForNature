@@ -1,5 +1,8 @@
-# FOP CODE FOR NATURE 2.0
-*hopefully only have 2.0*
+# FOP CODE FOR NATURE 3.0
+*yea this must be the final version*
+
+In the 3.0 version, we introduced a new feature - global leaderboard.
+A special thanks to myself.
 
 In the 2.0 version, we introduced a new feature - password hashing.  
 A special thanks to the person who implemented this valuable addition.
@@ -32,7 +35,8 @@ create table UserAccount (
     	current_point int default 0,  
     	registration_date date default (current_date),  
 	question_answered varchar(50),  
-	last_checkin_date date  
+	last_checkin_date date,  
+ 	XP int default 0   
 );   
    
 And remember to change the username to your database username as well as the password  
