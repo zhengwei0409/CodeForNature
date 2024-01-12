@@ -1,7 +1,7 @@
 # FOP CODE FOR NATURE 3.0
 *yea this must be the final version*
 
-In the 3.0 version, we introduced a new feature - global leaderboard.
+In the 3.0 version, we introduced a new feature - global leaderboard.  
 A special thanks to myself.
 
 In the 2.0 version, we introduced a new feature - password hashing.  
