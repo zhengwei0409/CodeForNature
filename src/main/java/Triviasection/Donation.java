@@ -13,6 +13,7 @@ public class Donation {
         Scanner sc = new Scanner(System.in);
         
         int points = database.getCurrentPoint();
+        int XP = database.getXP();
        
         System.out.print("How much do you want to donate? : $");
         int donationAmount = sc.nextInt();
@@ -27,8 +28,10 @@ public class Donation {
         int pointsAwarded = donationAmount * 10;
         
         points += pointsAwarded;
+        XP += pointsAwarded;
         
         database.updateCurrentPoint(points);
+        database.updateXP(XP);
         
         // calculate the amount of donation money goes to the mentioned NGO
         double amount = donationAmount * 0.9;

@@ -5,6 +5,7 @@ import TestingGUICode.Login; // for GUI
 // import LoginSection.*; // for CLI
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ConnectDatabase {
     
@@ -16,19 +17,22 @@ public class ConnectDatabase {
     private LocalDate registrationDate;
     private LocalDate lastCheckInDate;
     private int current_point;
+    private int XP;
     private String question_answered;
-    private int userId = lg.getUserId();;
+    private int userId = lg.getUserId();
+    private ArrayList<Integer> userXP = new ArrayList<Integer>();
+    private ArrayList<String> usernameList = new ArrayList<String>();
     
     // constructor that connect to database and execute query
     public ConnectDatabase() {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
         String password = "";
 
         try {
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
             
-            String sqlQuery = "SELECT id, email, username, registration_date, current_point, question_answered, last_checkin_date FROM UserAccount WHERE id = ?";
+            String sqlQuery = "SELECT id, email, username, registration_date, current_point, question_answered, last_checkin_date, XP FROM UserAccount WHERE id = ?";
             
             // Create a PreparedStatement with the SQL query
             try (PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery)) {
@@ -47,6 +51,7 @@ public class ConnectDatabase {
                         this.userName = resultSet.getString("username");
                         this.userId = resultSet.getInt("id");
                         this.email = resultSet.getString("email");
+                        this.XP = resultSet.getInt("XP");
                         
                         // Convert java.sql.Date to LocalDate
                         this.registrationDate = sqlRegistrationDate.toLocalDate();
@@ -70,7 +75,7 @@ public class ConnectDatabase {
     
     // method use for update the point
     public void updateCurrentPoint(int newPoint) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
         String password = "";
 
@@ -95,9 +100,36 @@ public class ConnectDatabase {
         }
     }
     
+    // method use for update the XP
+    public void updateXP(int newXP) {
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
+        String username = "root";
+        String password = "";
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
+
+            // Update SQL query to set new value for current_point
+            String sqlUpdate = "UPDATE UserAccount SET XP = ? WHERE id = ?";
+
+            // Create a PreparedStatement with the SQL update query
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sqlUpdate)) {
+                // Set the parameters
+                preparedStatement.setInt(1, newXP);
+                preparedStatement.setInt(2, userId);
+                
+                // Execute the update
+                int rowsAffected = preparedStatement.executeUpdate();
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
     // method use for update the question answered
     public void updateQuestionAnswered(String questionAnswered) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
         String password = "";
 
@@ -124,7 +156,7 @@ public class ConnectDatabase {
     
     // method use for update the check in date
     public void updateCheckInDate(LocalDate lastCheckInDate) {
-        String jdbcUrl = "jdbc:mysql://localhost:3306/";
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
         String username = "root";
         String password = "";
 
@@ -145,6 +177,31 @@ public class ConnectDatabase {
 
             }
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // method use for getting user XP
+    public void getUserXP() {
+        
+        String jdbcUrl = "jdbc:mysql://localhost:3306/testing";
+        String username = "root";
+        String password = "";
+
+        
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
+            String query = "SELECT username, XP FROM UserAccount";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        String username2 = resultSet.getString("username");
+                        usernameList.add(username2);
+                        int XP = resultSet.getInt("XP");
+                        userXP.add(XP);
+                    }
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -177,6 +234,18 @@ public class ConnectDatabase {
     
     public LocalDate getLastCheckInDate() {
         return this.lastCheckInDate;
+    }
+    
+    public ArrayList<Integer> getUserXPList() {
+        return this.userXP;
+    }
+    
+    public ArrayList<String> getUserName() {
+        return this.usernameList;
+    }
+    
+    public int getXP() {
+        return this.XP;
     }
 
 }

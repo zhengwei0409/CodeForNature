@@ -81,6 +81,7 @@ public class Donations {
                 
                 
                 int points = database.getCurrentPoint();
+                int XP = database.getXP();
                 String donationAmountStr = donationsTF.getText();
                 
                 if(donationAmountStr.isEmpty()) {
@@ -91,7 +92,9 @@ public class Donations {
                 // convert the donation to points
                 int pointsAwarded = donationAmount * 10;
                 points += pointsAwarded;
+                XP += pointsAwarded;
                 database.updateCurrentPoint(points);
+                database.updateXP(XP);
                 // calculate the amount of donation money goes to the mentioned NGO
                 double amount = donationAmount * 0.9;
                 // write to the donation.txt file

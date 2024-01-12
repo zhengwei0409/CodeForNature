@@ -36,7 +36,7 @@ public class Register {
         
         try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "");
 
             // Insert user into the database
             String query = "INSERT INTO UserAccount (email, username, password, registration_date) VALUES (?, ?, ?, ?)";

@@ -14,13 +14,17 @@ public class CheckIn {
         LocalDate currentDate = LocalDate.now();
         
         int points = database.getCurrentPoint();
+        int XP = database.getXP();
         
         // check the conditions
         // case 1 : if the user just register his/her account and did not checkin yet
         if(lastCheckInDate == null) {
             points++;
+            XP++;
             // update the point in database
             database.updateCurrentPoint(points);
+            // update the XP in database
+            database.updateXP(XP);
             // update the check in date in database
             database.updateCheckInDate(currentDate);
             // feedback
@@ -34,8 +38,11 @@ public class CheckIn {
         // case 3 : if the user had check in previously and did not checkin today yet
         else {
             points++;
+            XP++;
             // update the point in database
             database.updateCurrentPoint(points);
+            // update the XP in database
+            database.updateXP(XP);
             // update the check in date in database
             database.updateCheckInDate(currentDate);
             // feedback

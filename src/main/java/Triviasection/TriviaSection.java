@@ -147,6 +147,7 @@ public class TriviaSection {
         // define all the necessary variable
         int attempts = 1;
         int points = database.getCurrentPoint();
+        int XP = database.getXP();
         
         System.out.println("\nDay " +  (i+1)  + " Trivia (Attempt #" + attempts + ")");
         System.out.println(question);
@@ -161,6 +162,7 @@ public class TriviaSection {
             userAnswer.equals("C") && C.equals(correctAnswer) ||
             userAnswer.equals("D") && D.equals(correctAnswer)) {
                 points += 2;
+                XP += 2;
                 System.out.println("Congratulations! You answered it correctly. \nYou have been awarded 2 point, you now have " + points + " points.");
                  
         } else {
@@ -186,6 +188,7 @@ public class TriviaSection {
                     userAnswer.equals("C") && C.equals(correctAnswer) ||
                     userAnswer.equals("D") && D.equals(correctAnswer)) {
                     points += 1;
+                    XP += 1;
                     System.out.println("Congratulations! You answered it correctly. \nYou have been awarded 1 point, you now have " + points + " points.");
                 } else {
                     System.out.println("Your answer is still incorrect, the correct answer is: \n" +  correctAnswer);
@@ -195,6 +198,9 @@ public class TriviaSection {
         
         // update the point in database
         database.updateCurrentPoint(points);
+        
+        // update the XP in database
+        database.updateXP(XP);
         
         // update the answered question in database
         if(database.getQuestionAnswered() != null) {
@@ -304,6 +310,7 @@ public class TriviaSection {
         // define all the necessary variable
         int attempts = 1;
         int points = database.getCurrentPoint();
+        int XP = database.getXP();
         
         System.out.println("\nDay " +  (questionNumber+1)  + " Trivia (Attempt #" + attempts + ")");
         System.out.println(question);
@@ -318,6 +325,7 @@ public class TriviaSection {
             userAnswer.equals("C") && C.equals(correctAnswer) ||
             userAnswer.equals("D") && D.equals(correctAnswer)) {
                 points += 2;
+                XP += 2;
                 System.out.println("Congratulations! You answered it correctly. \nYou have been awarded 2 point, you now have " + points + " points.");
                  
         } else {
@@ -343,6 +351,7 @@ public class TriviaSection {
                     userAnswer.equals("C") && C.equals(correctAnswer) ||
                     userAnswer.equals("D") && D.equals(correctAnswer)) {
                     points += 1;
+                    XP += 1;
                     System.out.println("Congratulations! You answered it correctly. \nYou have been awarded 1 point, you now have " + points + " points.");
                 } else {
                     System.out.println("Your answer is still incorrect, the correct answer is: \n" +  correctAnswer);
@@ -352,6 +361,9 @@ public class TriviaSection {
 
         // update the point in database
         database.updateCurrentPoint(points);
+        
+        // update the XP in database
+        database.updateXP(XP);
         
         // update the answered question in database
         if(database.getQuestionAnswered() != null) {

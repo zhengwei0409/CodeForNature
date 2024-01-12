@@ -270,6 +270,7 @@ public class TriviaSection {
                 // define all the necessary variable
                 int attempts = 1;
                 int points = database.getCurrentPoint();
+                int XP = database.getXP();
                 String userAnswer = (String) choicesList.getSelectedItem();
                 
                 playTriviaF.dispose();
@@ -280,10 +281,13 @@ public class TriviaSection {
                     userAnswer.equals("D") && D.equals(correctAnswer)) {
                     
                     points += 2;
+                    XP += 2;
                     
                     // update the point in database
                     database.updateCurrentPoint(points);
-        
+                    // update the XP in database
+                    database.updateXP(XP);
+                    
                     // update the answered question in database
                     if(database.getQuestionAnswered() != null) {
                         String newAnsweredQuestion = database.getQuestionAnswered() + "," + Integer.toString(currentQuestionIndex);
@@ -535,6 +539,7 @@ public class TriviaSection {
                 
                 // define all the necessary variable
                 int points = database.getCurrentPoint();
+                int XP = database.getXP();
                 String userAnswer = (String) choicesList.getSelectedItem();
                 
 
@@ -544,10 +549,12 @@ public class TriviaSection {
                     userAnswer.equals("D") && D.equals(correctAnswer)) {
                     
                     points += 1;
+                    XP +=1;
                     
                     // update the point in database
                     database.updateCurrentPoint(points);
-        
+                    // update the XP in database
+                    database.updateXP(XP);
                     // update the answered question in database
                     if(database.getQuestionAnswered() != null) {
                         String newAnsweredQuestion = database.getQuestionAnswered() + "," + Integer.toString(currentQuestionIndex);
@@ -1509,6 +1516,7 @@ public class TriviaSection {
                 int attempts = 1;
                 String userAnswer = (String) choicesList.getSelectedItem();
                 int points = database.getCurrentPoint();
+                int XP = database.getXP();
                 
                 playTriviaF.dispose();
 
@@ -1518,10 +1526,13 @@ public class TriviaSection {
                     userAnswer.equals("D") && D.equals(correctAnswer)) {
                     
                     points += 2;
+                    XP += 2;
                     
                     // update the point in database
                     database.updateCurrentPoint(points);
-        
+                    // update the XP in database
+                    database.updateXP(XP);
+                    
                     // update the answered question in database
                     if(database.getQuestionAnswered() != null) {
                         String newAnsweredQuestion = database.getQuestionAnswered() + "," + Integer.toString(q);
@@ -1770,6 +1781,7 @@ public class TriviaSection {
             public void actionPerformed(ActionEvent e) {
                 
                 int points = database.getCurrentPoint();
+                int XP = database.getXP();
                 String userAnswer = (String) choicesList.getSelectedItem();
                 
 
@@ -1781,9 +1793,12 @@ public class TriviaSection {
                     playTriviaF.dispose();
                     
                     points += 1;
+                    XP += 1;
                     
                     // update the point in database
                     database.updateCurrentPoint(points);
+                    // update the XP in database
+                    database.updateXP(XP);
         
                     // update the answered question in database
                     if(database.getQuestionAnswered() != null) {

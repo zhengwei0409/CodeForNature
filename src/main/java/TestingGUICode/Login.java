@@ -106,7 +106,7 @@ public class Login {
                 
                 try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "");
 
             // Query the database
             String query = "SELECT id, password FROM UserAccount WHERE email = ? AND username= ?";
@@ -161,7 +161,7 @@ public class Login {
             LocalDate currentDate = LocalDate.now();
         try {
             // Establish database connection
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testing", "root", "");
 
             // Insert user into the database
             String query = "INSERT INTO UserAccount (email, username, password, registration_date) VALUES (?, ?, ?, ?)";

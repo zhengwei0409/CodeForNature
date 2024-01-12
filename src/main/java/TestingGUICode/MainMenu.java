@@ -128,12 +128,24 @@ public class MainMenu {
         
         // news button
         JButton newsBtn = new JButton("NEWS");
-        newsBtn.setBounds(400, 400, 300, 85);
+        newsBtn.setBounds(200, 400, 300, 85);
         newsBtn.setFont(new Font("Helvetica Neue", Font.BOLD, 22)); // Set font
         
         newsBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 news.news();
+            }
+        });
+        
+        // news button
+        JButton leaderboardBtn = new JButton("LEADERBOARD");
+        leaderboardBtn.setBounds(600, 400, 300, 85);
+        leaderboardBtn.setFont(new Font("Helvetica Neue", Font.BOLD, 22)); // Set font
+        
+        leaderboardBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mainMenuF.dispose();
+                new Leaderboard();
             }
         });
         
@@ -188,6 +200,11 @@ public class MainMenu {
         newsBtn.setIcon(newsPic);
         newsBtn.setIconTextGap(10);
         
+        ImageIcon leaderboardPic = new ImageIcon("/Users/zhengwei/NetBeansProjects/TriviaSection/src/main/java/leaderboardIcons.png");
+        leaderboardBtn.setIcon(leaderboardPic);
+        leaderboardBtn.setIconTextGap(10);
+        
+        
         // add to panel
         
         lower.add(triviaBtn);
@@ -196,6 +213,7 @@ public class MainMenu {
         lower.add(pointsShopBtn);
         lower.add(newsBtn);
         lower.add(logOutBtn);
+        lower.add(leaderboardBtn);
         lower.add(mainBG);
         upper.add(title);
         upper.add(title2);
